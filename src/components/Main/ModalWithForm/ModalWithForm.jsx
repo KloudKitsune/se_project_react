@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import closebtn from "../../../assets/closeicon.svg";
 
 function ModalWithForm() {
   return (
@@ -7,7 +8,7 @@ function ModalWithForm() {
         <div className="modal__content">
           <h2 className="modal__title">New garment</h2>
           <button type="button" className="modal__close">
-            close
+            <img src={closebtn} alt="close" />
           </button>
           <form className="modal__form">
             <label htmlFor="name" className="modal__label">
