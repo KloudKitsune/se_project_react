@@ -26,14 +26,13 @@
 .modal__footer {
   padding-left: 32px;
   padding-bottom: 32px;
-  margin
 }
 
 .modal__caption {
-    margin: 0;
-    padding: 20px 0 12px;
+  margin: 0;
+  padding: 20px 0 12px;
 }
 
 .modal__weather {
-    margin: 0;
+  margin: 0;
 }
