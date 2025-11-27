@@ -26,7 +26,7 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "storm",
+    condition: "thunderstorm",
     url: new URL("../assets/day/storm.png", import.meta.url).href,
   },
 
@@ -58,7 +58,7 @@ export const weatherOptions = [
   },
   {
     day: false,
-    condition: "storm",
+    condition: "thunderstorm",
     url: new URL("../assets/night/storm.png", import.meta.url).href,
   },
 ];
@@ -181,4 +181,4 @@ export const coordinates = {
   longitude: -111.891,
 };
 
-export const APIkey = "4cfd1f71683b84a2aa7b82bd223fad6a";
+export const apiKey = "4cfd1f71683b84a2aa7b82bd223fad6a";
