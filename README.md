@@ -19,9 +19,9 @@ WTWR is a React frontend project that recommends clothing based on the current w
 
 ## Getting Started
 
-1. Clone the repo:
-   using bash do the following
-   git clone git@github.com:KloudKitsune/se_project_react.git
-   cd se_project_react
-   npm install
-   npm run dev
+1. Clone the repo: using bash do the following
+
+   1. git clone git@github.com:KloudKitsune/se_project_react.git
+   2. cd se_project_react
+   3. npm install
+   4. npm run dev
