@@ -1,7 +1,6 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
-// import { defaultClothingItems } from "../../utils/constants";
 
 function Main({ clothingItems, weatherData, handleCardClick }) {
   const visible = clothingItems.filter((item) => {
