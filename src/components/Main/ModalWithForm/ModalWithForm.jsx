@@ -4,7 +4,7 @@ import closebtn from "../../../assets/closeicon.svg";
 function ModalWithForm({
   children,
   title,
-  buttonText,
+  buttonText = "Save",
   name,
   activeModal,
   onClose,
