@@ -1,8 +1,17 @@
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../Main/ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
-  // ...
-
+const AddItemModal = ({ isOpen, onAddItem, onClose, activeModal }) => {
+  const defaultValues = {
+    name: "",
+    link: "",
+    weather: "",
+  };
+  const { values, handleChange } = useForm(defaultValues);
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onAddItem(values);
+  }
   return (
     <ModalWithForm
       name="add-garment"
@@ -16,9 +25,15 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
         Name{" "}
         <input
           type="text"
+          name="name"
           className="modal__input"
           id="name"
           placeholder="Name"
+          required
+          minLength="1"
+          maxLength="30"
+          value={values.name}
+          onChange={handleChange}
         />
       </label>
 
@@ -26,9 +41,13 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
         Image{" "}
         <input
           type="url"
+          name="link"
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
+          required
+          value={values.link}
+          onChange={handleChange}
         />
       </label>
       <fieldset className="modal__radio-buttons">
@@ -41,6 +60,7 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
             name="weather"
             value="hot"
             className="modal__radio-input"
+            onChange={handleChange}
           />{" "}
           Hot
         </label>
@@ -52,6 +72,7 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
             name="weather"
             value="warm"
             className="modal__radio-input"
+            onChange={handleChange}
           />{" "}
           Warm
         </label>
@@ -63,6 +84,7 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose, activeModal }) => {
             name="weather"
             value="cold"
             className="modal__radio-input"
+            onChange={handleChange}
           />{" "}
           Cold
         </label>

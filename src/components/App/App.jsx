@@ -36,6 +36,16 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const onAddItem = (inputValues) => {
+    // call the fetch function, declare in seperate file
+    //handle it with .then((data) => {}) which will include all the stuff below goes into the .then
+    //Dont' use inputValues because it wont have ID
+    //ID will be included in the response data
+    setClothingItems([...clothingItems, inputValues]);
+    closeActiveModal();
+    //.catch()
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -75,6 +85,7 @@ function App() {
           activeModal={activeModal} //may need to remove
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
+          onAddItem={onAddItem}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
