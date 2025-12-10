@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -10,6 +11,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -60,19 +62,36 @@ function App() {
   }, []);
 
   return (
-    <CurrentTemperatureUnitContext.Provider
-      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-    >
-      <div className="page">
-        <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main
-            clothingItems={clothingItems}
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-          />
-        </div>
-        {/* <ModalWithForm
+    <BrowserRouter>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <div className="page">
+          <div className="page__content">
+            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    clothingItems={clothingItems}
+                    weatherData={weatherData}
+                    handleCardClick={handleCardClick}
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                  />
+                }
+              />
+            </Routes>
+          </div>
+          {/* <ModalWithForm
           name="add-garment"
           title="New garment"
           buttonText="Add garment"
@@ -80,21 +99,22 @@ function App() {
           onClose={closeActiveModal}
         ></ModalWithForm> */}
 
-        <AddItemModal
-          buttonText="Add garment" //may need to remove
-          activeModal={activeModal} //may need to remove
-          isOpen={activeModal === "add-garment"}
-          onClose={closeActiveModal}
-          onAddItem={onAddItem}
-        />
-        <ItemModal
-          isOpen={activeModal === "preview"}
-          onClose={closeActiveModal}
-          card={selectedCard}
-        />
-        <Footer />
-      </div>
-    </CurrentTemperatureUnitContext.Provider>
+          <AddItemModal
+            buttonText="Add garment" //may need to remove
+            activeModal={activeModal} //may need to remove
+            isOpen={activeModal === "add-garment"}
+            onClose={closeActiveModal}
+            onAddItem={onAddItem}
+          />
+          <ItemModal
+            isOpen={activeModal === "preview"}
+            onClose={closeActiveModal}
+            card={selectedCard}
+          />
+          <Footer />
+        </div>
+      </CurrentTemperatureUnitContext.Provider>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,20 @@
+.sidebar__user-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.sidebar__username {
+  margin: 16px 116px 16px 16px;
+
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+}
