@@ -1,6 +1,49 @@
 .clothes-section {
-  /* display: block;
-  justify-content: center;
-  width: 1015px;
-  height: 676px; */
+  margin-top: 39px;
+  flex-grow: 1;
+}
+
+.clothes-section__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.clothes-section__text {
+  margin: 0;
+  width: auto;
+  height: auto;
+
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-right: 20px;
+}
+
+.clothes-section__button {
+  width: auto;
+  height: auto;
+  white-space: none;
+  padding: 0;
+  border: none;
+
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.clothes-section__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 323px);
+  grid-template-rows: repeat(auto-fit, 328px);
+  grid-gap: 20px;
+  padding: 0;
+  object-fit: fill;
 }
