@@ -13,7 +13,9 @@ function Header({ handleAddClick, weatherData }) {
 
   return (
     <header className="header">
-      <img src={logo} alt="Logo" className="header__logo" />
+      <NavLink className="header__nav-link" to="/">
+        <img src={logo} alt="Logo" className="header__logo" />
+      </NavLink>
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>

@@ -23,6 +23,14 @@
 }
 
 .modal__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__footer-left {
+  display: flex;
+  flex-direction: column;
   padding-left: 32px;
   padding-bottom: 32px;
 }
@@ -34,4 +42,13 @@
 
 .modal__weather {
   margin: 0;
+}
+
+.modal__button-delete {
+  right: auto;
+  background: none;
+  border: none;
+  margin: 24px 33px 73px;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
 }

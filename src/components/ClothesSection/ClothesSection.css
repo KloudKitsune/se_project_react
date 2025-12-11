@@ -29,6 +29,7 @@
   white-space: none;
   padding: 0;
   border: none;
+  cursor: pointer;
 
   font-family: "Cabinet Grotesk";
   font-weight: 700;

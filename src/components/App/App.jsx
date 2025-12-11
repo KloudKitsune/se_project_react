@@ -5,8 +5,9 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 // import { defaultClothingItems } from "../../utils/constants";
-import { getItems } from "../../utils/api";
+import { getItems, removeItem } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import { addItem } from "../../utils/api";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -39,13 +40,34 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const deleteItemHandler = (itemID) => {
+    removeItem(itemID)
+      .then(() => {
+        // Remove the deleted item from state so UI updates
+        setClothingItems(clothingItems.filter((item) => item._id !== itemID));
+        closeActiveModal(); // Close the modal after deletion
+      })
+      .catch(console.error);
+  };
+
   const onAddItem = (inputValues) => {
-    // call the fetch function, declare in seperate file
-    //handle it with .then((data) => {}) which will include all the stuff below goes into the .then
-    //Dont' use inputValues because it wont have ID
-    //ID will be included in the response data
-    setClothingItems([...clothingItems, inputValues]);
-    closeActiveModal();
+    // const newCardData = {
+    //   name: inputValues.name,
+    //   imageUrl: inputValues.imageUrl,
+    //   weather: inputValues.weather,
+    // };
+
+    addItem(inputValues, {
+      name: inputValues.name,
+      imageUrl: inputValues.imageUrl, // <--- FIX
+      weather: inputValues.weather,
+    })
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]); //inputValues
+        closeActiveModal();
+      })
+      .catch(console.error);
+
     //.catch()
   };
 
@@ -63,7 +85,7 @@ function App() {
 
     getItems()
       .then((data) => {
-        setClothingItems(data);
+        setClothingItems(data.reverse());
       })
       .catch(console.error);
   }, []);
@@ -93,6 +115,7 @@ function App() {
                   <Profile
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
+                    handleAddClick={handleAddClick}
                   />
                 }
               />
@@ -117,6 +140,7 @@ function App() {
             isOpen={activeModal === "preview"}
             onClose={closeActiveModal}
             card={selectedCard}
+            onDelete={deleteItemHandler}
           />
           <Footer />
         </div>
