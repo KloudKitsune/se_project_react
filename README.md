@@ -69,3 +69,8 @@ REACT_APP_WEATHER_API_KEY=yourKeyHere
 ## Start the app
 
 npm start
+
+## Video Overview
+
+Here is a link to the video overview of the project.
+https://drive.google.com/file/d/1VeELrabrND1OigCX4vy3-FEObiZXH5n2/view?usp=drive_link
