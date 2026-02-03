@@ -9,6 +9,10 @@ function ModalWithForm({
   activeModal,
   onClose,
   onSubmit,
+  isValid,
+  extraActions,
+  buttonGroupVariant,
+  submitButtonClass = "confirm-delete__delete-button",
 }) {
   const isOpen = activeModal === name;
 
@@ -21,9 +25,22 @@ function ModalWithForm({
         </button>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
+
+          <div
+            className={`modal__button-group ${buttonGroupVariant ? `modal__button-group--${buttonGroupVariant}` : ""}`}
+          >
+            <button
+              type="submit"
+              className={`modal__submit ${submitButtonClass || ""} ${isValid ? "modal__submit_active" : "modal__submit_disabled"}`}
+              disabled={!isValid}
+            >
+              {buttonText}
+            </button>
+
+            {extraActions && (
+              <div className="modal__extra-actions">{extraActions}</div>
+            )}
+          </div>
         </form>
       </div>
     </div>

@@ -4,7 +4,7 @@
 
 .sidebar__user-container {
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   align-items: center;
 }
 
@@ -21,4 +21,46 @@
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+}
+
+.sidebar__btn-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.sidebar__profile-edit-btn {
+  width: 65;
+  height: 25;
+  /* top: 232px;
+  left: 40px; */
+  opacity: 1;
+  cursor: pointer;
+  border: none;
+
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.sidebar__logout-btn {
+  width: 65;
+  height: 25;
+  /* top: 232px;
+  left: 40px; */
+  opacity: 1;
+  cursor: pointer;
+  border: none;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
 }

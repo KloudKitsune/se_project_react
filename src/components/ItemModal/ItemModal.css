@@ -18,7 +18,7 @@
 
 .modal__image {
   max-width: 498px;
-  min-height: 498px;
+  max-height: 498px;
   width: 100%;
 }
 
