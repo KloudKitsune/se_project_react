@@ -3,9 +3,7 @@ import ModalWithForm from "../Main/ModalWithForm/ModalWithForm";
 function ConfirmDeleteModal({ onClose, onConfirm, activeModal }) {
   return (
     <ModalWithForm
-      name="confirm-delete"
-      // title="Delete item"
-      activeModal={activeModal}
+      isOpen={activeModal === "confirm-delete"}
       onClose={onClose}
       onSubmit={(e) => {
         e.preventDefault();

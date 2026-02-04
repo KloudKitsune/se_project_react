@@ -2,13 +2,13 @@
   font-family: "Cabinet Grotesk";
   src: url("../fonts/CabinetGrotesk-Medium.woff") format("woff");
   font-weight: 500;
-  font-style: Medium;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Cabinet Grotesk";
   src: url("../fonts/CabinetGrotesk-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: Bold;
+  font-style: normal;
   font-display: swap; /* optional but recommended */
 }

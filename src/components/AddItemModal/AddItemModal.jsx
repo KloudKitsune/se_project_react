@@ -1,34 +1,43 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../Main/ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ isOpen, onAddItem, onClose, activeModal }) => {
+const AddItemModal = ({ onAddItem, onClose, activeModal }) => {
   const defaultValues = {
     name: "",
     imageUrl: "",
     weather: "",
   };
+
   const { values, handleChange } = useForm(defaultValues);
+
+  // ✅ validity check for submit button
+  const isValid =
+    values.name.trim() !== "" &&
+    values.imageUrl.trim() !== "" &&
+    values.weather !== "";
+
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values);
   }
+
   return (
     <ModalWithForm
-      name="add-garment"
+      isOpen={activeModal === "add-garment"}
       title="New garment"
       buttonText="Add garment"
-      isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
       activeModal={activeModal}
+      isValid={isValid} // ✅ now submit enables correctly
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="addItem-name" className="modal__label">
         Name{" "}
         <input
           type="text"
           name="name"
           className="modal__input"
-          id="name"
+          id="addItem-name"
           placeholder="Name"
           required
           minLength="1"
@@ -38,29 +47,29 @@ const AddItemModal = ({ isOpen, onAddItem, onClose, activeModal }) => {
         />
       </label>
 
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="addItem-imageUrl" className="modal__label">
         Image{" "}
         <input
           type="url"
           name="imageUrl"
           className="modal__input"
-          id="imageUrl"
+          id="addItem-imageUrl"
           placeholder="Image URL"
           required
           value={values.imageUrl}
           onChange={handleChange}
         />
       </label>
+
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
 
         <label
-          htmlFor="hot"
+          htmlFor="addItem-hot"
           className="modal__label modal__label_type_radio"
-          required
         >
           <input
-            id="hot"
+            id="addItem-hot"
             type="radio"
             name="weather"
             value="hot"
@@ -70,9 +79,12 @@ const AddItemModal = ({ isOpen, onAddItem, onClose, activeModal }) => {
           Hot
         </label>
 
-        <label htmlFor="warm" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="addItem-warm"
+          className="modal__label modal__label_type_radio"
+        >
           <input
-            id="warm"
+            id="addItem-warm"
             type="radio"
             name="weather"
             value="warm"
@@ -82,9 +94,12 @@ const AddItemModal = ({ isOpen, onAddItem, onClose, activeModal }) => {
           Warm
         </label>
 
-        <label htmlFor="cold" className="modal__label modal__label_type_radio">
+        <label
+          htmlFor="addItem-cold"
+          className="modal__label modal__label_type_radio"
+        >
           <input
-            id="cold"
+            id="addItem-cold"
             type="radio"
             name="weather"
             value="cold"

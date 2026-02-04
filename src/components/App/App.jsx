@@ -30,7 +30,6 @@ import Profile from "../Profile/Profile";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal.jsx";
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null); // null when not logged in
   const isLoggedIn = Boolean(currentUser);
   const [authChecked, setAuthChecked] = useState(false);
@@ -52,13 +51,11 @@ function App() {
 
     checkToken(token)
       .then((userData) => {
-        // setIsLoggedIn(true);
         setCurrentUser(userData);
       })
       .catch((err) => {
         console.error(err);
         localStorage.removeItem("jwt");
-        // setIsLoggedIn(false);
         setCurrentUser(null);
       })
       .finally(() => {
@@ -142,7 +139,6 @@ function App() {
       .then((data) => {
         localStorage.setItem("jwt", data.token);
         setCurrentUser(data.user);
-        // setIsLoggedIn(true);
         closeActiveModal();
       })
       .catch(console.error);
@@ -190,17 +186,11 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
-    // setIsLoggedIn(false);
     setCurrentUser(null);
   };
 
   // Create new card
   const onAddItem = (inputValues) => {
-    // const newCardData = {
-    //   name: inputValues.name,
-    //   imageUrl: inputValues.imageUrl,
-    //   weather: inputValues.weather,
-    // };
     const token = localStorage.getItem("jwt");
 
     addItem(inputValues, token) // pass token as second argument
@@ -243,7 +233,6 @@ function App() {
                 weatherData={weatherData}
                 onOpenLogin={openLoginModal}
                 onOpenRegister={openRegisterModal}
-                // isLoggedIn={isLoggedIn}
               />
               <Routes>
                 <Route
@@ -277,33 +266,26 @@ function App() {
                 />
               </Routes>
             </div>
-            {/* <ModalWithForm
-          name="add-garment"
-          title="New garment"
-          buttonText="Add garment"
-          activeModal={activeModal}
-          onClose={closeActiveModal}
-        ></ModalWithForm> */}
+
             <RegisterModal
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
               activeModal={activeModal}
               onRegister={onRegister}
+              onOpenLogin={openLoginModal}
             />
 
             <LoginModal
               isOpen={activeModal === "login"}
               onClose={closeActiveModal}
               activeModal={activeModal}
-              // setCurrentUser={setCurrentUser}
-              // setIsLoggedIn={setIsLoggedIn}
               onLogin={onLogin}
               onOpenRegister={openRegisterModal}
             />
 
             <AddItemModal
-              buttonText="Add garment" //may need to remove
-              activeModal={activeModal} //may need to remove
+              buttonText="Add garment"
+              activeModal={activeModal}
               isOpen={activeModal === "add-garment"}
               onClose={closeActiveModal}
               onAddItem={onAddItem}

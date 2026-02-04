@@ -10,7 +10,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const currentUser = useContext(CurrentUserContext);
 
-  const isLiked = item.likes?.some((user) => user._id === currentUser?._id);
+  const isLiked = item.likes?.includes(currentUser?._id);
 
   const handleCardClick = () => onCardClick(item);
 

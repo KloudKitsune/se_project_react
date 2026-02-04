@@ -33,10 +33,6 @@
 }
 
 .sidebar__profile-edit-btn {
-  width: 65;
-  height: 25;
-  /* top: 232px;
-  left: 40px; */
   opacity: 1;
   cursor: pointer;
   border: none;
@@ -50,10 +46,6 @@
 }
 
 .sidebar__logout-btn {
-  width: 65;
-  height: 25;
-  /* top: 232px;
-  left: 40px; */
   opacity: 1;
   cursor: pointer;
   border: none;

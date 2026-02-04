@@ -3,13 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../Main/ModalWithForm/ModalWithForm";
 import { useNavigate } from "react-router-dom"; // ✅ import
 
-const LoginModal = ({
-  isOpen,
-  onClose,
-  activeModal,
-  onLogin,
-  onOpenRegister,
-}) => {
+const LoginModal = ({ onClose, activeModal, onLogin, onOpenRegister }) => {
   const { values, handleChange } = useForm({ email: "", password: "" });
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate(); // ✅ hook
@@ -41,13 +35,11 @@ const LoginModal = ({
 
   return (
     <ModalWithForm
-      name="login"
+      isOpen={activeModal === "login"}
       title="Log in"
       buttonText="Log In"
-      isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      activeModal={activeModal}
       isValid={isValid}
       extraActions={
         <button

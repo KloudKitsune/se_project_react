@@ -32,13 +32,11 @@ const EditProfileModal = ({
 
   return (
     <ModalWithForm
-      name="edit-profile"
+      isOpen={activeModal === "edit-profile"}
       title="Edit Profile"
       buttonText="Save changes"
-      isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      activeModal={activeModal}
       isValid={isFormValid}
     >
       <label className="modal__label">
