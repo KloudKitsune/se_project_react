@@ -4,7 +4,6 @@
 
 .sidebar__user-container {
   display: flex;
-  /* flex-direction: row-reverse; */
   align-items: center;
 }
 
@@ -37,7 +36,7 @@
   cursor: pointer;
   border: none;
 
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-weight: 700;
   font-style: Bold;
   font-size: 20px;
@@ -49,7 +48,7 @@
   opacity: 1;
   cursor: pointer;
   border: none;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-weight: 700;
   font-style: Bold;
   font-size: 20px;
