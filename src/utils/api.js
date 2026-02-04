@@ -30,7 +30,7 @@ export function removeItem(itemID, token) {
   }).then(handleServerResponse);
 }
 
-// get current user profile
+// PROTECTED - get current user profile
 export const getCurrentUser = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
@@ -55,4 +55,26 @@ export const updateProfile = (data, token) => {
     }
     return res.json();
   });
+};
+
+// PROTECTED — requires token
+export const addCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+// PROTECTED — requires token
+export const removeCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
 };

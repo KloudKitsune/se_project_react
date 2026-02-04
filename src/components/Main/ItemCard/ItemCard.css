@@ -7,7 +7,7 @@
 }
 
 .card__name {
-  position: absolute;
+  /* position: absolute; */
   top: 15px;
   margin: 0;
   padding: 4px 12px;
@@ -21,9 +21,41 @@
   text-align: center;
 }
 
+.card__image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .card__image {
   width: 100%;
   border-radius: 15px;
   border: 1px solid #0000004d;
+  cursor: pointer;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 12px; /* distance from bottom of image */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* center the header horizontally */
+}
+
+.card__header {
+  display: flex;
+  align-items: center; /* vertically align name and heart */
+  gap: 8px; /* space between name and heart */
+  background-color: rgba(255, 255, 255, 0.8); /* optional bg */
+  padding: 4px 8px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 260px;
+  background: none;
+}
+
+.card__like {
+  width: 18px;
+  height: 15px;
   cursor: pointer;
 }

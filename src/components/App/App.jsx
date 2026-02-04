@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { getItems, removeItem, getCurrentUser } from "../../utils/api";
+import {
+  getItems,
+  removeItem,
+  getCurrentUser,
+  addCardLike,
+  removeCardLike,
+  updateProfile,
+  addItem,
+} from "../../utils/api";
 import { register, login, checkToken } from "../../utils/auth.js";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
-import { updateProfile } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem } from "../../utils/api";
 
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -73,6 +79,22 @@ function App() {
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+
+  const handleCardLike = (item, isLiked) => {
+    const token = localStorage.getItem("jwt");
+
+    const apiRequest = isLiked
+      ? removeCardLike(item._id, token)
+      : addCardLike(item._id, token);
+
+    apiRequest
+      .then((updatedCard) => {
+        setClothingItems((items) =>
+          items.map((i) => (i._id === item._id ? updatedCard : i)),
+        );
+      })
+      .catch(console.error);
   };
 
   const handleAddClick = () => {
@@ -231,6 +253,7 @@ function App() {
                       clothingItems={clothingItems}
                       weatherData={weatherData}
                       handleCardClick={handleCardClick}
+                      onCardLike={handleCardLike}
                     />
                   }
                 />
@@ -247,6 +270,7 @@ function App() {
                         handleAddClick={handleAddClick}
                         handleLogout={handleLogout}
                         onOpenEditProfile={openEditProfileModal}
+                        onCardLike={handleCardLike}
                       />
                     </ProtectedRoute>
                   }
@@ -289,6 +313,7 @@ function App() {
               onClose={closeActiveModal}
               card={selectedCard}
               onDelete={openDeleteConfirm}
+              onCardLike={handleCardLike}
             />
 
             <ConfirmDeleteModal

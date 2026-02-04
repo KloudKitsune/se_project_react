@@ -66,6 +66,10 @@ npm install
 
 REACT_APP_WEATHER_API_KEY=yourKeyHere
 
+## Open BACKEND express app to handle API requests following this link
+
+https://github.com/KloudKitsune/se_project_express
+
 ## Start the app
 
 npm start
