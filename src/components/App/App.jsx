@@ -211,7 +211,7 @@ function App() {
 
     addItem(inputValues, token) // pass token as second argument
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems([data.data, ...clothingItems]);
         closeActiveModal();
       })
       .catch(console.error);

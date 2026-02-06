@@ -5,6 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = Boolean(currentUser);
 
   // Guard against missing data
   if (!card) return null;
@@ -28,7 +29,7 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
 
-          {isOwn && (
+          {isLoggedIn && isOwn && (
             <button
               type="button"
               className="modal__button-delete"
