@@ -16,7 +16,7 @@
 
   font-family: "Cabinet Grotesk";
   font-weight: 700;
-  font-style: Bold;
+  font-style: normal;
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -33,7 +33,7 @@
 
   font-family: "Cabinet Grotesk";
   font-weight: 700;
-  font-style: Bold;
+  font-style: normal;
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -41,10 +41,12 @@
 }
 
 .clothes-section__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 323px);
-  grid-template-rows: repeat(auto-fit, 328px);
-  grid-gap: 20px;
+  list-style: none;
   padding: 0;
-  object-fit: fill;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(323px, 1fr));
+  gap: 20px;
+  justify-items: center;
 }

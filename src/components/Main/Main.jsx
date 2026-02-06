@@ -7,7 +7,7 @@ function Main({ clothingItems, weatherData, handleCardClick, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const visible = clothingItems.filter((item) => {
-    return item.weather === weatherData.type;
+    return item.weather?.toLowerCase() === weatherData.type;
   });
 
   return (

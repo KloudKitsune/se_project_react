@@ -13,7 +13,8 @@ export default function ClothesSection({
 
   // Only show items owned by the current user
   const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser?._id,
+    (item) =>
+      item.owner === currentUser?._id || item.owner?._id === currentUser?._id,
   );
 
   return (

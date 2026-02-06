@@ -25,6 +25,7 @@
 
 .sidebar__btn-container {
   margin-top: 24px;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -35,6 +36,7 @@
   opacity: 1;
   cursor: pointer;
   border: none;
+  background-color: transparent;
 
   font-family: "Cabinet Grotesk";
   font-weight: 700;

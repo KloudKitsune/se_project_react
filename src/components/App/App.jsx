@@ -74,8 +74,8 @@ function App() {
   };
 
   const handleCardClick = (card) => {
-    setActiveModal("preview");
     setSelectedCard(card);
+    setActiveModal("preview");
   };
 
   const handleCardLike = (item, isLiked) => {
@@ -86,9 +86,25 @@ function App() {
       : addCardLike(item._id, token);
 
     apiRequest
-      .then((updatedCard) => {
+      .then((res) => {
+        // Safely extract likes array from the API response
+        const newLikes =
+          res && res.likes
+            ? res.likes
+            : isLiked
+              ? []
+              : [...item.likes, currentUser._id];
+
+        // Update clothingItems
         setClothingItems((items) =>
-          items.map((i) => (i._id === item._id ? updatedCard : i)),
+          items.map((i) =>
+            i._id === item._id ? { ...i, likes: newLikes } : i,
+          ),
+        );
+
+        // Update selected card if modal is open
+        setSelectedCard((prev) =>
+          prev._id === item._id ? { ...prev, likes: newLikes } : prev,
         );
       })
       .catch(console.error);
