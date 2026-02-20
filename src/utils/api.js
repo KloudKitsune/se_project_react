@@ -1,4 +1,9 @@
-const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.txtlet.org"
+    : "http://localhost:3001";
+
+// const baseUrl = "http://localhost:3001";
 
 const handleServerResponse = (res) =>
   res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -46,7 +51,7 @@ export const updateProfile = (data, token) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   }).then((res) => {
@@ -63,7 +68,7 @@ export const addCardLike = (itemId, token) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };
@@ -74,7 +79,7 @@ export const removeCardLike = (itemId, token) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };

@@ -1,15 +1,27 @@
-// Specify the BASE_URL for the API.
-export const BASE_URL = "http://localhost:3001";
+// Specify the baseUrl for the API.
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.txtlet.org"
+    : "http://localhost:3001";
+// const baseUrl = "http://localhost:3001";
 
 const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
+// DONT FORGET TO REMOVE THIS CODE AFTER PASSING REVIEW
+//CRASH TEST
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("Server will crash now");
+  }, 0);
+});
+
 // The register function accepts the necessary data as arguments,
 // and sends a POST request to the given endpoint.
 // POST /signup
 export const register = ({ name, avatar, email, password }) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +32,7 @@ export const register = ({ name, avatar, email, password }) => {
 
 // POST /signin
 export const login = ({ email, password }) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +43,7 @@ export const login = ({ email, password }) => {
 
 // GET /users/me — check token validity
 export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
