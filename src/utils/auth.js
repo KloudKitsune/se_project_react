@@ -9,14 +9,6 @@ const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-// DONT FORGET TO REMOVE THIS CODE AFTER PASSING REVIEW
-//CRASH TEST
-app.get("/crash-test", () => {
-  setTimeout(() => {
-    throw new Error("Server will crash now");
-  }, 0);
-});
-
 // The register function accepts the necessary data as arguments,
 // and sends a POST request to the given endpoint.
 // POST /signup
